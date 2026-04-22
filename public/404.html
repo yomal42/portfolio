@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <script>
+      // GitHub Pages 404 fallback for HashRouter SPA.
+      // Redirect any unknown path back to the app root, preserving the hash.
+      (function () {
+        var path = window.location.pathname;
+        var segs = path.split('/').filter(Boolean);
+        // For project pages (https://user.github.io/<repo>/...), keep the repo prefix.
+        var base = segs.length > 0 ? '/' + segs[0] + '/' : '/';
+        window.location.replace(base + window.location.search + window.location.hash);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
