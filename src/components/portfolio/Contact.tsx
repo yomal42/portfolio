@@ -1,80 +1,78 @@
-import { Mail, Linkedin, Github, FileText } from "lucide-react";
+import { Mail, Github, Linkedin, FileText } from "lucide-react";
 
 export const Contact = () => (
-  <section id="contact" className="relative bg-foreground py-24 text-background md:py-32">
+  <footer id="contact" className="w-full bg-[#0a0a0a] pt-12 pb-8 text-white/90">
     <div className="mx-auto max-w-7xl px-6 md:px-10">
-      <div className="mb-16 grid grid-cols-12 gap-6">
-        <div className="col-span-12 md:col-span-4">
-          <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] text-background/60">
-            <span className="text-accent">04</span>
-            <span className="h-px w-10 bg-background/30" />
-            <span>Contact</span>
+      
+      {/* 12-COLUMN GRID SYSTEM */}
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+        
+        {/* LEFT: Section Label (3 cols) */}
+<div className="md:col-span-3">
+  <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] opacity-40">
+    {/* Number removed here to keep it clean */}
+    <span className="h-px w-10 bg-current opacity-30" />
+    <span>Contact</span>
+  </div>
+</div>
+
+        {/* RIGHT: Content (9 cols) */}
+        <div className="md:col-span-9">
+          
+          {/* FLEX CONTAINER FOR THREE CATEGORIES */}
+          <div className="flex flex-row items-start justify-between w-full">
+            
+            {/* 1. EMAIL - Left-aligned with text above */}
+            <div className="space-y-4">
+              <p className="font-mono text-[9px] uppercase tracking-widest opacity-40">Email</p>
+              <a href="mailto:yomalawarjana@gmail.com" className="group block">
+                <div className="flex h-11 w-11 items-center justify-center border border-white/10 group-hover:border-accent group-hover:bg-accent transition-all duration-300">
+                  <Mail className="size-4 group-hover:text-black" />
+                </div>
+              </a>
+            </div>
+
+            {/* 2. SOCIALS - Centered in the 9-column block */}
+            <div className="space-y-4 flex flex-col items-center">
+              <p className="font-mono text-[9px] uppercase tracking-widest opacity-40 text-center">Socials</p>
+              <div className="flex gap-4"> 
+                <a href="https://www.linkedin.com/in/yomal-moderage-258994180/" className="group block">
+                  <div className="flex h-11 w-11 items-center justify-center border border-white/10 group-hover:border-accent group-hover:bg-accent transition-all duration-300">
+                    <Linkedin className="size-4 group-hover:text-black" />
+                  </div>
+                </a>
+                <a href="https://github.com/yomal42" className="group block">
+                  <div className="flex h-11 w-11 items-center justify-center border border-white/10 group-hover:border-accent group-hover:bg-accent transition-all duration-300">
+                    <Github className="size-4 group-hover:text-black" />
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* 3. RESUME - Aligned with the Theme Toggle above */}
+            <div className="space-y-4 flex flex-col items-end">
+              <p className="font-mono text-[9px] uppercase tracking-widest opacity-40 text-right">Resume</p>
+              <a href="#" className="group block">
+                <div className="flex h-11 w-11 items-center justify-center border border-white/10 group-hover:border-accent group-hover:bg-accent transition-all duration-300">
+                  <FileText className="size-4 group-hover:text-black" />
+                </div>
+              </a>
+            </div>
+
+          </div>
+
+          {/* BOTTOM BAR */}
+          <div className="flex justify-between items-center border-t border-white/5 pt-8 mt-16">
+            <p className="font-mono text-[8px] uppercase tracking-widest opacity-30">
+              © 2026 YOMALAM
+            </p>
+            <p className="font-mono text-[8px] uppercase tracking-widest opacity-30">
+              CYBER SECURITY ENGINEER
+            </p>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-8">
-          <h2 className="text-balance text-5xl font-bold leading-[0.95] tracking-tighter md:text-7xl">
-            Let's talk<span className="text-accent">.</span>
-          </h2>
-        </div>
-      </div>
 
-      <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-        <Column title="Contact Me">
-          <IconLink href="mailto:your.email@domain.com" label="Email" icon={<Mail className="size-5" />} />
-        </Column>
-
-        <Column title="Socials">
-          <div className="flex items-center gap-4">
-            <IconLink href="https://linkedin.com/in/yourname" label="LinkedIn" icon={<Linkedin className="size-5" />} external />
-            <IconLink href="https://github.com/yourname" label="GitHub" icon={<Github className="size-5" />} external />
-          </div>
-        </Column>
-
-        <Column title="CV">
-          <IconLink href="/cv.pdf" label="Download CV" icon={<FileText className="size-5" />} download />
-        </Column>
       </div>
     </div>
-
-    <footer className="mt-24 border-t border-background/15">
-      <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-4 px-6 py-8 font-mono text-[10px] uppercase tracking-[0.3em] text-background/50 md:flex-row md:items-center md:px-10">
-        <span>© {new Date().getFullYear()} Yomal</span>
-        <span>Cyber Security Engineer</span>
-      </div>
-    </footer>
-  </section>
-);
-
-const Column = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <div className="flex flex-col items-start gap-4">
-    <p className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-background">
-      {title}
-    </p>
-    {children}
-  </div>
-);
-
-const IconLink = ({
-  href,
-  label,
-  icon,
-  external,
-  download,
-}: {
-  href: string;
-  label: string;
-  icon: React.ReactNode;
-  external?: boolean;
-  download?: boolean;
-}) => (
-  <a
-    href={href}
-    aria-label={label}
-    title={label}
-    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-    {...(download ? { download: true } : {})}
-    className="inline-flex size-11 items-center justify-center border border-background/20 text-background/80 transition-colors hover:border-accent hover:text-accent"
-  >
-    {icon}
-  </a>
+  </footer>
 );

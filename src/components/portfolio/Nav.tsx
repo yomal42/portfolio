@@ -27,16 +27,23 @@ export const Nav = () => {
           : "border-b border-transparent"
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6 md:px-10">
+      {/* FIXED WIDTH — NO OVERFLOW */}
+      <nav className="mx-auto flex h-16 w-full max-w-[92%] items-center justify-between px-4 md:max-w-4xl md:px-8">
+
+        {/* LOGO */}
         <a href="#top" className="flex items-center gap-3 group">
-          <span className="grid size-9 place-items-center bg-foreground text-background group-hover:rotate-3" style={{ transition: "transform 300ms" }}>
+          <span
+            className="grid size-9 place-items-center bg-foreground text-background group-hover:rotate-3"
+            style={{ transition: "transform 300ms" }}
+          >
             <span className="size-4 border-2 border-background" />
           </span>
           <span className="font-bold tracking-tighter text-lg">
-            YOUR<span className="text-muted-foreground">.NAME</span>
+            Yomal<span className="text-muted-foreground">M</span>
           </span>
         </a>
 
+        {/* DESKTOP LINKS */}
         <div className="hidden items-center gap-10 text-sm font-medium uppercase tracking-[0.2em] md:flex">
           {links.map((l) => (
             <a
@@ -49,8 +56,10 @@ export const Nav = () => {
           ))}
         </div>
 
+        {/* TOGGLE + MENU */}
         <div className="flex items-center gap-3">
           <ThemeToggle />
+
           <button
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
@@ -65,9 +74,10 @@ export const Nav = () => {
         </div>
       </nav>
 
+      {/* MOBILE MENU */}
       {open && (
         <div className="border-t border-border bg-background md:hidden">
-          <div className="mx-auto flex max-w-7xl flex-col px-6 py-4">
+          <div className="mx-auto flex w-full max-w-[92%] flex-col px-4 py-4">
             {links.map((l) => (
               <a
                 key={l.href}

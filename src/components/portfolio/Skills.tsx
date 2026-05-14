@@ -1,26 +1,13 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { SectionHeader } from "./SectionHeader";
 
 const skills = [
-  "Firewalls",
-  "SIEM",
-  "IDS / IPS",
-  "VPN",
-  "Network Segmentation",
-  "Penetration Testing",
-  "Vulnerability Assessment",
-  "Incident Response",
-  "SOC Operations",
-  "Cryptography",
-  "Zero Trust",
-  "Cloud Security",
-  "Linux",
-  "Python",
-  "Bash Scripting",
-  "Wireshark",
-  "Nmap",
-  "Splunk",
+  "SIEM", "SOC Operations", "Incident Response", "Security Monitoring", 
+  "Vulnerability Assessment", "Threat Detection", "MITRE ATT&CK Framework", 
+  "Firewall", "Network Security", "Cloud Security", "EDR/XDR", 
+  "Active Directory", "Nmap", "Wireshark", "Zero Trust", "IDS / IPS", 
+  "VPN", "Linux Administration", "Windows Administration", 
+  "Endpoint Security", "PowerShell Scripting"
 ];
 
 const PREVIEW_COUNT = 8;
@@ -31,39 +18,51 @@ export const Skills = () => {
   const hiddenCount = skills.length - PREVIEW_COUNT;
 
   return (
-    <section id="skills" className="relative border-b border-border py-24 md:py-32">
+    <section id="skills" className="w-full py-24 border-b border-border/50">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <SectionHeader
-          index="02"
-          eyebrow="Skills"
-          title="Tools & technologies."
-        />
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          
+          {/* LEFT: Section Label (3 cols) - Index number removed */}
+          <div className="md:col-span-3">
+            <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] opacity-60">
+              <span className="h-px w-10 bg-current opacity-30" />
+              <span>Skills</span>
+            </div>
+          </div>
 
-        <ul className="flex flex-wrap gap-2">
-          {visible.map((s) => (
-            <li
-              key={s}
-              className="border border-border-strong bg-surface px-3 py-1.5 font-mono text-xs text-foreground transition-colors hover:border-accent hover:text-accent"
-            >
-              {s}
-            </li>
-          ))}
-        </ul>
+          {/* RIGHT: Content (9 cols) */}
+          <div className="md:col-span-9">
+            <h2 className="text-4xl font-bold tracking-tighter md:text-5xl mb-12">
+              Tools & technologies<span className="text-accent">.</span>
+            </h2>
 
-        {hiddenCount > 0 && (
-          <button
-            type="button"
-            onClick={() => setExpanded((v) => !v)}
-            className="mt-6 inline-flex items-center gap-2 border border-border-strong bg-surface px-3 py-1.5 font-mono text-xs text-muted-foreground transition-colors hover:border-accent hover:text-accent"
-            aria-expanded={expanded}
-            aria-controls="skills"
-          >
-            {expanded ? "Show less" : `Show all (${skills.length})`}
-            <ChevronDown
-              className={`h-3.5 w-3.5 transition-transform ${expanded ? "rotate-180" : ""}`}
-            />
-          </button>
-        )}
+            <ul className="flex flex-wrap gap-2">
+              {visible.map((s) => (
+                <li
+                  key={s}
+                  className="border border-border/50 bg-surface/50 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition-all hover:border-accent hover:text-accent"
+                >
+                  {s}
+                </li>
+              ))}
+            </ul>
+
+            {hiddenCount > 0 && (
+              <button
+                type="button"
+                onClick={() => setExpanded((v) => !v)}
+                className="mt-8 inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground transition-colors"
+                aria-expanded={expanded}
+              >
+                {expanded ? "Show less" : `Show all (${hiddenCount} more)`}
+                <ChevronDown
+                  className={`h-3 w-3 transition-transform duration-300 ${expanded ? "rotate-180" : ""}`}
+                />
+              </button>
+            )}
+          </div>
+          
+        </div>
       </div>
     </section>
   );

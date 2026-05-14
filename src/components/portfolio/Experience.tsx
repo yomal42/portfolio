@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { SectionHeader } from "./SectionHeader";
 
 type Role = {
   period: string;
@@ -12,112 +11,139 @@ type Role = {
 
 const roles: Role[] = [
   {
-    period: "2024 — Present",
-    role: "Cyber Security Engineer",
-    org: "Company Name",
+    period: "Jan 2024 — Jan 2026",
+    role: "Cybersecurity Engineer",
+    org: "Oak Integrated Systems",
     summary:
-      "Promoted to Cyber Security Engineer. Lead network defense and incident response across the organization, owning architecture decisions and security tooling.",
+      "Engineered enterprise-grade security architectures and managed complex security operations, specializing in SIEM optimization, firewall management, and hybrid-cloud threat detection workflows.",
     tasks: [
-      "Architected zero-trust segmentation across 12+ sites, reducing lateral-movement risk.",
-      "Led incident response for high-severity events, cutting mean time to contain by 40%.",
-      "Tuned SIEM detections and built runbooks adopted by the wider SOC team.",
-      "Mentored junior engineers and ran internal threat-hunting workshops.",
+      "Designed and implemented enterprise security architectures aligned with defense-in-depth principles across multiple client environments",
+      "Deployed and managed EDR/XDR, firewall (onprem/Cloud), DLP, and PAM solutions across enterprise infrastructures",
+      "Performed infrastructure and endpoint hardening to reduce attack surface and improve security posture",
+      "Engineered and supported SIEM-based monitoring using Microsoft Sentinel, SentinelOne, and Cortex XSIAM",
+      "Implemented and optimized log ingestion, correlation rules, and detection logic to improve threat visibility and alert accuracy",
+      "Conducted detection tuning and alert optimization to reduce false positives and improve SOC efficiency",
+      "Supported security telemetry analysis and centralized monitoring across hybrid environments",
+      "Handled SOC operations including alert triage, incident investigation, and response coordination",
+      "Conducted vulnerability assessments and provided remediation recommendations and risk analysis",
+      "Delivered PoC demonstrations and supported presales engineering activities and client discussions",
+      "Provided security consulting and technical advisory services to improve client security architecture",
+      "Collaborated with cross-functional teams to design secure and scalable enterprise infrastructure solutions"
     ],
   },
   {
-    period: "2022 — 2024",
-    role: "Associate Cyber Security Engineer",
-    org: "Company Name",
+    period: "Jan 2023 — Dec 2023",
+    role: "Junior IT Executive - Security",
+    org: "Metropolitan Technologies",
     summary:
-      "Supported day-to-day security operations, monitoring, and triage while ramping up on architecture and incident response.",
+      "Administered internal security operations and firewall infrastructure, conducting proactive vulnerability assessments to strengthen enterprise network defenses.",
     tasks: [
-      "Monitored SIEM alerts and triaged incidents as part of the SOC rotation.",
-      "Assisted with firewall, VPN and endpoint security configuration changes.",
-      "Contributed to detection tuning and documentation of response playbooks.",
+      "Administered enterprise endpoint security using Kaspersky Security Center, including policy configuration, deployment, and incident response handling",
+      "Supported firewall security operations, including rule configuration, policy enforcement, and security optimization",
+      "Conducted vulnerability assessments and contributed to remediation planning aligned with business and security requirements",
+      "Supported incident response processes, including detection, alert triage, and escalation of security events",
+      "Monitored network traffic and security telemetry to identify anomalies, threats, and vulnerabilities",
+      "Implemented patch management and system hardening practices to reduce attack surface",
+      "Performed network and system troubleshooting to ensure secure and stable enterprise operations"
     ],
   },
   {
-    period: "2019 — 2022",
-    role: "Security Engineer",
-    org: "Company Name",
+    period: "Mar 2022 — Jan 2023",
+    role: "IT Infrastructure & Security Trainee",
+    org: "John Keells (Jaykay Marketing Services)",
     summary:
-      "Operated SIEM and EDR tooling and hardened firewall, VPN and remote-access infrastructure.",
+      "Acquired fundamental expertise in endpoint security and identity management within a large-scale enterprise environment, supporting day-to-day security operations.",
     tasks: [
-      "Onboarded 200+ log sources into Splunk and authored correlation rules.",
-      "Migrated legacy site-to-site VPNs to modern IKEv2 with certificate-based auth.",
-      "Ran quarterly vulnerability assessments and tracked remediation to closure.",
-      "Owned the patch and configuration baseline for perimeter firewalls.",
+      "Supported endpoint security operations using Kaspersky Security Center, including installation, updates, and basic incident handling",
+      "Assisted in monitoring security alerts and performing initial triage and escalation",
+      "Participated in VPN deployment to support secure remote access for enterprise users",
+      "Supported Identity and Access Management (IAM) processes, including user provisioning and access control",
+      "Provided IT infrastructure support and troubleshooting across systems and networks",
+      "Collaborated with IT teams to maintain system availability and operational continuity"
     ],
-  },
-  {
-    period: "2017 — 2019",
-    role: "Network Engineer",
-    org: "Company Name",
-    summary:
-      "Designed and maintained enterprise routing, switching and firewall policies for a multi-site network.",
-    tasks: [
-      "Refactored core routing with OSPF/BGP, improving failover convergence.",
-      "Standardized switch configurations and rolled out 802.1X across the campus.",
-      "Documented network topology and policies, replacing tribal knowledge.",
-    ],
-  },
+  }
 ];
 
 export const Experience = () => {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="experience" className="relative border-b border-border bg-surface/40 py-24 md:py-32">
+    <section id="experience" className="w-full py-24 border-b border-border/50">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
-        <SectionHeader index="03" eyebrow="Experience" title="Career timeline." />
+        
+        {/* SHARED 12-COLUMN GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+          
+         <div className="md:col-span-3">
+  <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] opacity-60">
+    <span className="h-px w-10 bg-current opacity-30" />
+    <span>Experience</span>
+  </div>
+</div>
 
-        <ol className="relative border-l border-strong pl-8">
-          {roles.map((r, i) => {
-            const isOpen = open === i;
-            return (
-              <li key={r.period} className="relative mb-12 last:mb-0">
-                <span className="absolute -left-[37px] top-2 grid size-4 place-items-center bg-background">
-                  <span className="size-2 bg-accent" />
-                </span>
-                <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-                  {r.period}
-                </p>
-                <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
-                  {r.role}
-                </h3>
-                <p className="mt-1 text-sm text-accent">{r.org}</p>
-                <p className="mt-3 max-w-2xl text-muted-foreground">- {r.summary}</p>
+          {/* RIGHT: Content (9 cols) */}
+          <div className="md:col-span-9">
+            <h2 className="text-5xl font-bold tracking-tighter md:text-7xl mb-16">
+              Career timeline<span className="text-accent">.</span>
+            </h2>
 
-                <button
-                  type="button"
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  aria-expanded={isOpen}
-                  className="mt-4 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground hover:text-foreground"
-                >
-                  {isOpen ? "Hide details" : "Tasks & responsibilities"}
-                  <ChevronDown
-                    className={`size-3 transition-transform ${isOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
+            <ol className="relative border-l border-strong/30 pl-8 ml-1">
+              {roles.map((r, i) => {
+                const isOpen = open === i;
+                return (
+                  <li key={r.period} className="relative mb-16 last:mb-0">
+                    
+                    {/* Timeline Dot Alignment - Matches Education dot perfectly */}
+                    <span className="absolute -left-[41px] top-1.5 size-4 bg-background grid place-items-center">
+                      <span className="size-2 bg-accent" />
+                    </span>
+                    
+                    <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                      {r.period}
+                    </p>
+                    
+                    <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
+                      {r.role}
+                    </h3>
+                    
+                    <p className="mt-1 text-sm font-medium text-accent/80">{r.org}</p>
+                    
+                    <p className="mt-4 max-w-3xl text-lg leading-relaxed text-muted-foreground">
+                      {r.summary}
+                    </p>
 
-                <div
-                  className={`grid max-w-2xl overflow-hidden transition-all duration-300 ${
-                    isOpen ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                  }`}
-                >
-                  <ul className="min-h-0 space-y-2 text-muted-foreground">
-                    {r.tasks.map((t) => (
-                      <li key={t} className="flex gap-3">
-                        <span className="select-none text-accent">-</span>
-                        <span>{t}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </li>
-            );
-          })}
-        </ol>
+                    <button
+                      type="button"
+                      onClick={() => setOpen(isOpen ? null : i)}
+                      className="mt-6 inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground hover:text-foreground transition-colors"
+                    >
+                      {isOpen ? "Hide details" : "Tasks & responsibilities"}
+                      <ChevronDown
+                        className={`size-3 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                      />
+                    </button>
+
+                    <div
+                      className={`grid max-w-3xl overflow-hidden transition-all duration-300 ease-in-out ${
+                        isOpen ? "mt-6 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                      }`}
+                    >
+                      <ul className="min-h-0 space-y-3 text-base text-muted-foreground">
+                        {r.tasks.map((t) => (
+                          <li key={t} className="flex gap-3 leading-relaxed">
+                            <span className="select-none text-accent font-bold">·</span>
+                            <span>{t}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </li>
+                );
+              })}
+            </ol>
+          </div>
+
+        </div>
       </div>
     </section>
   );

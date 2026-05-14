@@ -1,42 +1,59 @@
-import { SectionHeader } from "./SectionHeader";
-
-const education = [
-  {
-    period: "2013 — 2017",
-    degree: "B.Sc. in Computer Science / Networking",
-    school: "University Name",
-    detail: "Specialization in network engineering and information security.",
-  },
-  {
-    period: "2017 — 2018",
-    degree: "Postgraduate Certificate in Cybersecurity",
-    school: "Institution Name",
-    detail: "Focus on offensive security, cryptography, and network defense.",
-  },
-];
-
 export const Education = () => (
-  <section id="education" className="relative border-b border-border py-24 md:py-32">
+  <section id="education" className="w-full py-24 border-b border-border/50">
     <div className="mx-auto max-w-7xl px-6 md:px-10">
-      <SectionHeader index="03" eyebrow="Education" title="Academic background." />
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-10">
+        
+        <div className="md:col-span-3">
+  <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.3em] opacity-60">
+    <span className="h-px w-10 bg-current opacity-30" />
+    <span>Education</span>
+  </div>
+</div>
 
-      <ol className="relative border-l border-strong pl-8">
-        {education.map((e) => (
-          <li key={e.period} className="relative mb-12 last:mb-0">
-            <span className="absolute -left-[37px] top-2 grid size-4 place-items-center bg-background">
-              <span className="size-2 bg-accent" />
-            </span>
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
-              {e.period}
-            </p>
-            <h3 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
-              {e.degree}
-            </h3>
-            <p className="mt-1 text-sm text-accent">{e.school}</p>
-            <p className="mt-3 max-w-2xl text-muted-foreground">{e.detail}</p>
-          </li>
-        ))}
-      </ol>
+        {/* RIGHT COLUMN: Timeline (9 cols) */}
+        <div className="md:col-span-9">
+          <h2 className="text-4xl font-bold tracking-tighter md:text-5xl mb-16">
+            Academic background<span className="text-accent">.</span>
+          </h2>
+
+          <ol className="relative border-l border-strong/30 pl-8 ml-1">
+            <li className="relative mb-16">
+              <span className="absolute -left-[41px] top-1.5 size-4 bg-background grid place-items-center">
+                <span className="size-1.5 bg-accent" />
+              </span>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">2025 — 2027</p>
+              <h3 className="mt-2 text-xl font-bold tracking-tight md:text-2xl">Master of Science in Computer & Systems Science</h3>
+              <p className="text-accent text-xs font-medium">Stockholm University (DSV), Sweden</p>
+              <p className="mt-4 text-base text-muted-foreground leading-relaxed max-w-3xl">
+                Continuing studies to deepen systems thinking and gain advanced knowledge in cybersecurity, AI, and computer science.
+              </p>
+            </li>
+            
+            <li className="relative mb-16">
+              <span className="absolute -left-[41px] top-1.5 size-4 bg-background grid place-items-center">
+                <span className="size-1.5 bg-accent" />
+              </span>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">2020 — 2024</p>
+              <h3 className="mt-2 text-xl font-bold tracking-tight md:text-2xl">BSc (Hons) in Information Technology Specialising in Cyber Security</h3>
+              <p className="text-accent text-xs font-medium">Sri Lanka Institute of Information Technology</p>
+              <p className="mt-4 text-base text-muted-foreground leading-relaxed max-w-3xl">
+                Built a strong foundation in cybersecurity, covering network security, SOC operations, and security engineering principles.
+              </p>
+            </li>
+
+            <li className="relative last:mb-0">
+              <span className="absolute -left-[41px] top-1.5 size-4 bg-background grid place-items-center">
+                <span className="size-1.5 bg-accent" />
+              </span>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">2006 — 2019</p>
+              <h3 className="mt-2 text-xl font-bold tracking-tight md:text-2xl">Isipathana College, Sri Lanka</h3>
+              <p className="mt-4 text-base text-muted-foreground leading-relaxed max-w-3xl">
+                Completed Advanced Level studies with a focus on Mathematics, Accounting, and Computer Science.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
     </div>
   </section>
 );
