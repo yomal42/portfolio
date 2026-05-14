@@ -7,7 +7,7 @@ const skills = [
   "Firewall", "Network Security", "Cloud Security", "EDR/XDR", 
   "Active Directory", "Nmap", "Wireshark", "Zero Trust", "IDS / IPS", 
   "VPN", "Linux Administration", "Windows Administration", 
-  "Endpoint Security", "PowerShell Scripting"
+  "Endpoint Security", "PowerShell Scripting" , "Data Loss Prevention (DLP)"
 ];
 
 const PREVIEW_COUNT = 8;
